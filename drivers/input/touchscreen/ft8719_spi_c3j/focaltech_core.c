@@ -1542,11 +1542,11 @@ static int fts_ts_probe_entry(struct fts_ts_data *ts_data)
         goto err_get_regulator;
     }
 
-    ret = fts_ts_enable_regulator(false);//default disable regulator
-    if (ret < 0) {
-        FTS_ERROR("Failed to enable regulator");
-        goto err_enable_regulator;
-    }
+	ret = fts_ts_enable_regulator(true);
+	if (ret < 0) {
+		FTS_ERROR("Failed to enable regulator");
+		goto err_enable_regulator;
+	}
 
 #if (!FTS_CHIP_IDC)
     fts_reset_proc(200);
